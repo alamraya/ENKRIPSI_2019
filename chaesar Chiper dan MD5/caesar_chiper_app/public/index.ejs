@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Caesar Chiper</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      body {
+        background-image: linear-gradient(to right, #ea5c55, #c36ad1);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 755px;
+        height: 635px;
+        background: #292d3b;
+        border-radius: 10px;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 0 51px;
+        padding-top: 22px;
+        box-sizing: border-box;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 40px;
+        color: #a2a2a2;
+        font-weight: 500;
+      }
+
+      /* ENCRYPT */
+      .encrypt {
+        margin-top: 17px;
+      }
+
+      .encrypt-flex-1 {
+        display: flex;
+      }
+
+      .encrypt-string {
+        width: 528px;
+        height: 51px;
+        box-sizing: border-box;
+        padding-left: 30px;
+        font-size: 20px;
+        background: #3d4254;
+        border: none;
+        color: #b1b1b1;
+        margin-right: 8px;
+      }
+
+      .encrypt-key {
+        width: 116px;
+        height: 51px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 20px;
+        background: #3d4254;
+        border: none;
+        color: #b1b1b1;
+      }
+
+      .encrypt-flex-2 {
+        display: flex;
+        margin-top: 17px;
+      }
+
+      .encrypt-submit {
+        width: 520px;
+        height: 51px;
+        margin-right: 16px;
+        border-radius: 26px;
+        border: 2px solid #dc6180;
+        box-sizing: border-box;
+        background: none;
+        color: #dc6180;
+        font-size: 20px;
+      }
+
+      .encrypt-reset {
+        width: 116px;
+        height: 51px;
+        border-radius: 26px;
+        border: 2px solid #dc6180;
+        box-sizing: border-box;
+        background: none;
+        color: #dc6180;
+        font-size: 20px;
+      }
+
+      .encrypt-output {
+        width: 652px;
+        height: 90px;
+        background: #3d4254;
+        color: #dc6180;
+        font-size: 20px;
+        border: none;
+        box-sizing: border-box;
+        margin-top: 17px;
+        padding-left: 30px;
+      }
+
+      /* DECRYPT */
+      .decrypt {
+        margin-top: 37px;
+      }
+
+      .decrypt-flex-1 {
+        display: flex;
+      }
+
+      .decrypt-string {
+        width: 528px;
+        height: 51px;
+        box-sizing: border-box;
+        padding-left: 30px;
+        font-size: 20px;
+        background: #3d4254;
+        border: none;
+        color: #b1b1b1;
+        margin-right: 8px;
+      }
+
+      .decrypt-key {
+        width: 116px;
+        height: 51px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 20px;
+        background: #3d4254;
+        border: none;
+        color: #b1b1b1;
+      }
+
+      .decrypt-flex-2 {
+        display: flex;
+        margin-top: 17px;
+      }
+
+      .decrypt-submit {
+        width: 520px;
+        height: 51px;
+        margin-right: 16px;
+        border-radius: 26px;
+        border: 2px solid #dc6180;
+        box-sizing: border-box;
+        background: none;
+        color: #dc6180;
+        font-size: 20px;
+      }
+
+      .decrypt-reset {
+        width: 116px;
+        height: 51px;
+        border-radius: 26px;
+        border: 2px solid #dc6180;
+        box-sizing: border-box;
+        background: none;
+        color: #dc6180;
+        font-size: 20px;
+      }
+
+      .decrypt-output {
+        width: 652px;
+        height: 90px;
+        background: #3d4254;
+        color: #dc6180;
+        font-size: 20px;
+        border: none;
+        box-sizing: border-box;
+        margin-top: 17px;
+        padding-left: 30px;
+      }
+
+      /* ANIMATION */
+      .encrypt-submit:hover,
+      .encrypt-reset:hover,
+      .decrypt-submit:hover,
+      .decrypt-reset:hover {
+        background: #dc6180;
+        color: white;
+        transition: all 0.2s linear;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h3>Caesar Chiper</h3>
+      <div class="encrypt">
+        <form action="/" method="post">
+          <div class="encrypt-flex-1">
+            <input
+              type="text"
+              class="encrypt-string"
+              name="encrypt_string"
+              placeholder="string"
+            />
+            <input
+              type="text"
+              class="encrypt-key"
+              name="encrypt_key"
+              placeholder="key"
+            />
+          </div>
+          <div class="encrypt-flex-2">
+            <button
+              type="submit"
+              class="encrypt-submit"
+              name="submit"
+              value="encrypt"
+            >
+              ENCRYPT
+            </button>
+            <button type="submit" class="encrypt-reset" name="encrypt_reset">
+              RESET
+            </button>
+          </div>
+          <input
+            type="text"
+            class="encrypt-output"
+            name="encrypt_output"
+            value="<%= data.encrypt %>"
+            readonly
+          />
+        </form>
+      </div>
+      <div class="decrypt">
+        <form action="/" method="post">
+          <div class="decrypt-flex-1">
+            <input
+              type="text"
+              class="decrypt-string"
+              name="decrypt_string"
+              placeholder="string"
+            />
+            <input
+              type="text"
+              class="decrypt-key"
+              name="decrypt_key"
+              placeholder="key"
+            />
+          </div>
+          <div class="decrypt-flex-2">
+            <button
+              type="submit"
+              class="decrypt-submit"
+              name="submit"
+              value="decrypt"
+            >
+              DECRYPT
+            </button>
+            <button type="submit" class="decrypt-reset" name="decrypt_reset">
+              RESET
+            </button>
+          </div>
+          <input
+            type="text"
+            class="decrypt-output"
+            name="decrypt_output"
+            value="<%= data.decrypt %>"
+            readonly
+          />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
