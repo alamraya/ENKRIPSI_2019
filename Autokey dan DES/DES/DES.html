@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DES Encrypt/Decrypt</title>
+    <script src="crypto-js.js"></script>
+</head>
+<body>
+        <label for="plaintext">Plaintext</label><br>
+        <textarea name="plaintext" id="plaintext" cols="50" rows="5"></textarea><br><br>
+        <label for="key">Key</label><br>
+        <textarea name="key" id="key" cols="50" rows="1"></textarea><br><br>
+        <button id="encrypt" onclick="Encrypt()">v Encrypt v</button> &nbsp; <button id="encrypt" onclick="Decrypt()">^ Decrypt ^</button><br><br>
+        <label for="result">Result</label><br>
+        <textarea name="result" id="result" cols="50" rows="5"></textarea><br><br>
+</body>
+<script>
+    function Encrypt() {
+        var key = document.getElementById("key").value;
+        var text = document.getElementById("plaintext").value;
+        var encrypted = CryptoJS.DES.encrypt(text, key).toString(); 
+        console.log(encrypted);
+        document.getElementById("result").value = encrypted;
+    }
+
+    function Decrypt() {
+        var key = document.getElementById("key").value;
+        var encr = document.getElementById("result").value;
+        var decrypted = CryptoJS.DES.decrypt(encr, key).toString(CryptoJS.enc.Utf8); 
+        console.log(decrypted);
+        document.getElementById("plaintext").value = decrypted;
+    }
+
+</script>
+</html>

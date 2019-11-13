@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Autokey</title>
+</head>
+<body>
+    <label for="plaintext">Plaintext</label><br>
+    <textarea name="plaintext" id="plaintext" cols="50" rows="5"></textarea><br><br>
+    <label for="key">Key</label><br>
+    <textarea name="key" id="key" cols="50" rows="1"></textarea><br><br>
+    <button id="encrypt" onclick="Encrypt()">v Encrypt v</button> &nbsp; <button id="encrypt" onclick="Decrypt()">^ Decrypt ^</button><br><br>
+    <label for="result">Result</label><br>
+    <textarea name="result" id="result" cols="50" rows="5"></textarea><br><br>
+
+    <script>
+        function Encrypt() {
+            plaintext = document.getElementById("plaintext").value.toLowerCase().replace(/[^a-z]/g, "");  
+            k = document.getElementById("key").value.toLowerCase().replace(/[^a-z]/g, ""); 
+            // do some error checking
+            if(plaintext.length < 1){ alert("Plaintext tidak boleh kosong atau angka !"); return; }    
+            if(k.length < 1){ alert("Key tidak boleh kosong atau angka !"); return; }
+            ciphertext="";
+            for(i=0; i<plaintext.length; i++){ 
+                if(i < k.length){
+                    ciphertext += String.fromCharCode((((plaintext.charCodeAt(i)-97) + (k.charCodeAt(i)-97)+26)%26)+97); 
+                }else{
+                    ciphertext += String.fromCharCode((((plaintext.charCodeAt(i)-97) + (plaintext.charCodeAt(i-k.length)-97)+26)%26)+97);
+                }    
+            } 
+            document.getElementById("result").value = ciphertext; 
+        } 
+        
+        function Decrypt(f) { 
+            ciphertext = document.getElementById("result").value.toLowerCase().replace(/[^a-z]/g, "");  
+            k = document.getElementById("key").value.toLowerCase().replace(/[^a-z]/g, ""); 
+            // do some error checking 
+            if(ciphertext.length < 1){ alert("please enter some ciphertext (letters and numbers only)"); return; }    
+            if(k.length <= 1){ alert("keyword should be at least 2 characters long"); return; }
+            plaintext="";
+            for(i=0; i<ciphertext.length; i++){ 
+                if(i < k.length){
+                    plaintext += String.fromCharCode((((ciphertext.charCodeAt(i)-97) - (k.charCodeAt(i)-97)+26)%26)+97); 
+                }else{
+                    plaintext += String.fromCharCode((((ciphertext.charCodeAt(i)-97) - (plaintext.charCodeAt(i-k.length)-97)+26)%26)+97);
+                }
+            } 
+            document.getElementById("plaintext").value = plaintext; 
+        } 
+    </script>
+</body>
+</html>
