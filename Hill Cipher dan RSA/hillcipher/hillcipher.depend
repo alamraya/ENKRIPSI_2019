@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1572940196 source:d:\hillcipher\fungsi.c
+	"header.h"
+
+1572940235 d:\hillcipher\header.h
+	<stdio.h>
+	<stdlib.h>
+	"string.h"
+
+1572940123 source:d:\hillcipher\main.c
+	"header.h"
+
