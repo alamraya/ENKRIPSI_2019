@@ -1,0 +1,1 @@
+Aplikasi dijalankan lewat command line
