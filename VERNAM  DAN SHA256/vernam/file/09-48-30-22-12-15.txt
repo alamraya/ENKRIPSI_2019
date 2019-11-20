@@ -1,0 +1,1 @@
+tugas buat login, lalu masuk ke database, user name pass admin. kalau salah pass maka gagal
